@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd /home/ubuntu/100xdevs-ci-cd
+cd 100xdevs-ci-cd
 
 git pull origin main
 npm install
