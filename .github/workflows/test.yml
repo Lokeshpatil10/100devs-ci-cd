@@ -12,6 +12,7 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4 #clone the repo
+
     - name: Multiple commands
       uses: appleboy/ssh-action@v1
       with:
@@ -19,7 +20,5 @@ jobs:
         username: ubuntu
         key: ${{ secrets.PRIVATE_SSH_KEY }}
         port: 22
-        script: |
-          whoami
-          ls -al
+        
     
