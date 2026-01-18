@@ -12,12 +12,14 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4 #clone the repo
-
-    - name: Execute remote SSH commands using password
+    - name: Multiple commands
       uses: appleboy/ssh-action@v1
       with:
-          host: 15.206.168.27
-          username: ubuntu
-          password: ${{ secrets.PRIVATE_SSH_KEY}}
-          port: 22
-          script: whoami
+        host: 15.206.168.27
+        username: ubuntu
+        key: ${{ secrets.PRIVATE_SSH_KEY }}
+        port: 22
+        script: |
+          whoami
+          ls -al
+    
