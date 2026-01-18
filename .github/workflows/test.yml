@@ -1,23 +1,23 @@
-name: Deploy Next.js to EC2
+name: Deploy Next.js to EC2  # Name of the GitHub Actions workflow
 
 on:
   push:
     branches:
-      - main # Triggers on pushes to the main branch
+      - main # Run this workflow only when code is pushed to the main branc
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  deploy:  # Define a job named "deploy"
+    runs-on: ubuntu-latest  # Use a fresh Ubuntu runner provided by GitHub
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4 #clone the repo
+    - name: Checkout code  # Step to get the latest code from GitHub
+      uses: actions/checkout@v4 # Action to clone your repository
 
-    - name: Multiple commands
-      uses: appleboy/ssh-action@v1
+    - name: Multiple commands  # Step to run deployment commands on your EC2 server
+      uses: appleboy/ssh-action@v1  # Use SSH to connect to a remote server
       with:
-        host: 15.206.168.27
-        username: ubuntu
-        key: ${{ secrets.PRIVATE_SSH_KEY }}
-        port: 22
-        script: ./deploy.sh
+        host: 172.31.42.166  # EC2 instance IP address
+        username: ubuntu  # Username to log into EC2
+        key: ${{ secrets.PRIVATE_SSH_KEY }}  # SSH private key stored in GitHub Secrets
+        port: 22  # SSH port (default 22)
+        script: ./deploy.sh  # Command/script to run on the EC2 server (your deployment script)
